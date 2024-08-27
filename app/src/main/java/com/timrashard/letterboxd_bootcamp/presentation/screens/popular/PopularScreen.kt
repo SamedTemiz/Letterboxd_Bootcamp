@@ -119,7 +119,7 @@ fun PopularScreen() {
                         .background(L_Black)
                 ) { page ->
                     when (page) {
-                        0 -> Text("Films Content")
+                        0 -> FilmsPage()
                         1 -> Text("Reviews Content")
                         2 -> Text("Lists Content")
                         3 -> Text("Journal Content")
