@@ -92,7 +92,7 @@ fun MovieListRow(
             fontFamily = DisplayPro,
             color = L_White,
             fontWeight = FontWeight.Bold,
-            fontSize = 16.sp,
+            fontSize = 18.sp,
             modifier = Modifier.padding(start = 16.dp)
         )
 
