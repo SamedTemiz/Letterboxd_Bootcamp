@@ -8,10 +8,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
@@ -46,6 +49,7 @@ import com.timrashard.letterboxd_bootcamp.presentation.components.DrawerContent
 import com.timrashard.letterboxd_bootcamp.ui.theme.L_Black
 import com.timrashard.letterboxd_bootcamp.ui.theme.L_LightGray
 import com.timrashard.letterboxd_bootcamp.ui.theme.L_Green
+import com.timrashard.letterboxd_bootcamp.ui.theme.L_Orange
 import com.timrashard.letterboxd_bootcamp.ui.theme.Satoshi
 import com.timrashard.letterboxd_bootcamp.ui.theme.L_White
 import kotlinx.coroutines.CoroutineScope
@@ -120,7 +124,7 @@ fun PopularScreen() {
                 ) { page ->
                     when (page) {
                         0 -> FilmsPage()
-                        1 -> Text("Reviews Content")
+                        1 -> ReviewsPage()
                         2 -> Text("Lists Content")
                         3 -> Text("Journal Content")
                     }
@@ -178,12 +182,22 @@ fun Tabs(
                             }
                         }
                 ) {
+                    if(index == 1){
+                        Box(
+                            modifier = Modifier
+                                .size(12.dp)
+                                .background(color = L_Orange, shape = CircleShape)
+                                .align(Alignment.TopEnd)
+                                .offset(x = (-16).dp, y = 16.dp)
+                        )
+                    }
+
                     Text(
                         text = tab,
                         fontFamily = Satoshi,
                         fontSize = 14.sp,
                         color = Color.White,
-                        modifier = Modifier.padding(horizontal = 18.dp, vertical = 12.dp)
+                        modifier = Modifier.padding(horizontal = 18.dp, vertical = 10.dp)
                     )
                 }
             }

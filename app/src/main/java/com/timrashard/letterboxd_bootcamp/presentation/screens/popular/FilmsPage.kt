@@ -26,17 +26,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import coil.compose.SubcomposeAsyncImage
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
+import com.timrashard.letterboxd_bootcamp.data.AppData
 import com.timrashard.letterboxd_bootcamp.data.entity.Movie
-import com.timrashard.letterboxd_bootcamp.data.entity.MovieLists
 import com.timrashard.letterboxd_bootcamp.ui.theme.DisplayPro
 import com.timrashard.letterboxd_bootcamp.ui.theme.L_LightGray
 import com.timrashard.letterboxd_bootcamp.ui.theme.L_White
@@ -53,9 +48,9 @@ fun FilmsPage() {
         newFromFriendsList.clear()
         popularWithFriends.clear()
 
-        popularMovieList.addAll(MovieLists.popularMovieList)
-        newFromFriendsList.addAll(MovieLists.newFromFriendsList)
-        popularWithFriends.addAll(MovieLists.popularWithFriends)
+        popularMovieList.addAll(AppData.popularMovieList)
+        newFromFriendsList.addAll(AppData.newFromFriendsList)
+        popularWithFriends.addAll(AppData.popularWithFriends)
     }
 
     LazyColumn(
@@ -65,27 +60,26 @@ fun FilmsPage() {
         modifier = Modifier.fillMaxSize()
     ) {
         item {
-            MovieListRow(title = "Popular this week", movies = popularMovieList)
+            MovieListComponent(title = "Popular this week", movies = popularMovieList)
         }
 
         item {
-            MovieListRow(title = "New from friends", movies = newFromFriendsList)
+            MovieListComponent(title = "New from friends", movies = newFromFriendsList)
         }
 
         item {
-            MovieListRow(title = "Popular with friends", movies = popularWithFriends)
+            MovieListComponent(title = "Popular with friends", movies = popularWithFriends)
         }
     }
 }
 
 @Composable
-fun MovieListRow(
+fun MovieListComponent(
     title: String,
     movies: List<Movie>
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = Modifier.fillMaxWidth()
     ) {
         Text(
             text = title,
